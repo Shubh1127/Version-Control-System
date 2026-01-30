@@ -15,13 +15,17 @@ yargs(hideBin(process.argv))
         type:'string'
     }
     )
-},add)
+},(argv)=>{
+    add(argv.file)
+})
 .command('commit <message>',"Commit the changes",(yargs)=>{
     yargs.positional("message",{
         describe:"Commit message",
         type:'string'
     })
-},commit)
+},(argv)=>{
+    commit(argv.message)
+})
 .command('revert <commitID',"Revert to previous commit",(yargs)=>{
     yargs.positional("commitID",{
         describe:"Commit ID to revert to",
